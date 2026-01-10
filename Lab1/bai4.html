@@ -9,17 +9,10 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- Bootstrap JS  -->
     <script src="js/bootstrap.bundle.min.js"></script>
-    <style>
-        .navbar,
-        .navbar-nav .nav-link,
-        .dropdown-menu .dropdown-item {
-            color: black !important;
-        }
-    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: rgb(217, 234, 240);">
+    <nav class="navbar navbar-expand-sm navbar-light" style="background-color: rgb(217, 234, 240);">
         <div class="container">
             <a class="navbar-brand" href="Lab3Index.html">
                 <img src="images/logo-energy-pilates.png" alt="" style="width: 150px;">
@@ -60,40 +53,105 @@
                         <a class="nav-link">Tiếng Anh</a>
                     </li>
                 </ul>
-
             </div>
         </div>
     </nav>
-    <aside>
-    <div class="col-sm-4">
-        <h2 class="text-info mb-3">Về tôi</h2>
-        <div class="card blog">
-            <img src="images/avatar.png" class="card-img-top" alt=" ... ">
-            <div class="card-body">
-                <h5 class="card-title">Giới thiệu bản thân</h5>
-                <p class="card-text">TS. Trần Hoàng, Tổ chức Tư vấn sức khỏe quốc tế độc lập <br>
-                    Châm ngõn: Ta không được chọn nơi minh sinh ra, nhưng ta được chọn cách minh sẽ sống
-                </p>
-            </div>
-        </div>
 
-        <h3 class="text-info mt-2">Chuyên mục</h3>
-        <ul class="list-group">
-            <li class="list-group-item active bg-info d-flex justify-content-between align-items-center">
-                <a class="nav-link" href="#">Chế độ tập</a>
-                <span class="badge bg-primary rounded-pill">12</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <a class="nav-link" href="#">Chế độ dinh dưỡng</a>
-                <span class="badge bg-primary rounded-pill">15</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <a class="nav-link" href="#">Cẩm nang cuộc sống</a>
-                <span class="badge bg-primary rounded-pill">99</span>
-            </li>
-        </ul>
-    </div>
-</aside>
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Aside: Sidebar cards (col-sm-4) -->
+            <aside class="col-sm-4">
+                <h2 class="text-info mb-3">Về tôi</h2>
+                <div class="card">
+                    <img src="images/avatar.png" class="card-img-top" alt="Avatar">
+                    <div class="card-body">
+                        <h5 class="card-title">Giới thiệu bản thân</h5>
+                        <p class="card-text">TS. Trần Hoàng, Tổ chức Tư vấn sức khỏe quốc tế độc lập <br>
+                        Châm ngôn: Ta không được chọn nơi mình sinh ra, nhưng ta được chọn cách mình sẽ sống</p>
+                    </div>
+                </div>
+
+                <h3 class="text-info mt-3">Chuyên mục</h3>
+                <ul class="list-group">
+                    <li class="list-group-item active bg-info d-flex justify-content-between align-items-center">
+                        <a class="nav-link text-white" href="#">Chế độ tập</a>
+                        <span class="badge bg-primary rounded-pill">12</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a class="nav-link" href="#">Chế độ dinh dưỡng</a>
+                        <span class="badge bg-primary rounded-pill">15</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a class="nav-link" href="#">Cẩm nang cuộc sống</a>
+                        <span class="badge bg-primary rounded-pill">99</span>
+                    </li>
+                </ul>
+            </aside>
+
+            <!-- Section: Articles (col-sm-8, same row) -->
+            <section class="col-sm-8">
+                <h5 class="text-primary mb-3">Blog của tôi</h5>
+                <div class="card p-3">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <img src="images/tap-piltes.jpg" class="img-fluid mb-2 rounded" alt="Pilates">
+                            <h6>Phương pháp tập Pilates giúp phục hồi chấn thương cột sống</h6>
+                            <p class="small">
+                                Ngoài việc giúp duy trì vóc dáng, cải thiện sự linh hoạt,
+                                Pilates còn giúp tăng cường sức khỏe cột sống và giảm đau hiệu quả.
+                            </p>
+                        </div>
+                        <div class="col-md-5">
+                            <ul class="list-unstyled">
+                                <li class="d-flex mb-3">
+                                    <img src="images/corevalue.jpg" width="60" class="me-2 rounded" alt="Core value">
+                                    <div>
+                                        <small class="fw-bold">Biết ơn đời, đời sẽ thương ta</small><br>
+                                        <small class="text-muted"><i class="fa-solid fa-message"></i> 30</small>
+                                    </div>
+                                </li>
+                                <li class="d-flex mb-3">
+                                    <img src="images/orange_300x300.jpg" width="60" class="me-2 rounded" alt="Orange">
+                                    <div>
+                                        <small class="fw-bold">9 tác dụng tuyệt vời của cam</small><br>
+                                        <small class="text-muted"><i class="fa-solid fa-message"></i> 28</small>
+                                    </div>
+                                </li>
+                                <li class="d-flex mb-3">
+                                    <img src="images/sesameoil_300x300.jpg" width="60" class="me-2 rounded" alt="Sesame oil">
+                                    <div>
+                                        <small class="fw-bold">10 công dụng bất ngờ từ dầu dừa</small><br>
+                                        <small class="text-muted"><i class="fa-solid fa-message"></i> 15</small>
+                                    </div>
+                                </li>
+                                <li class="d-flex">
+                                    <img src="images/spinach_300x300.jpg" width="60" class="me-2 rounded" alt="Spinach">
+                                    <div>
+                                        <small class="fw-bold">Lợi ích khi ăn rau mỗi ngày</small><br>
+                                        <small class="text-muted"><i class="fa-solid fa-message"></i> 14</small>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="text-center mt-3">
+                        <a href="#" class="btn btn-info text-white px-4">Xem thêm</a>
+                    </div>
+                </div>
+            </section>
+        </div> <!-- End row -->
+    </div> <!-- End container -->
+
+    <!-- Footer -->
+    <footer class="bg-info text-white text-center p-3 mt-5">
+        <p>© FPT Polytechnic</p>
+    </footer>
+
+    <!-- Add Font Awesome CDN in <head> for icons -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> -->
+    <!-- Move JS to end of body -->
+    <script src="js/bootstrap.bundle.min.js"></script>
 </body>
+
 
 </html>
