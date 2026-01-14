@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <title>Bài 4 - Lab 2</title>
@@ -8,119 +9,193 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/bootstrap.bundle.min.js"></script>
 </head>
+
 <body>
 
-<div class="container mt-4">
-    <h3 class="mb-3">Bài 4 Lab 2</h3>
+    <div class="container mt-4">
+        <h3 class="mb-3">Bài 4 Lab 2</h3>
 
-<!--MODAL -->
-    <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#accountModal">
-        Tài khoản
-    </button>
-</div>
+        <!--MODAL -->
+        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#accountModal">
+            Tài khoản
+        </button>
+        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#tableModal">
+            Bảng
+        </button>
+    </div>
 
-<!-- MODAL -->
-<div class="modal fade" id="accountModal">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
+    <!-- MODAL -->
+    <div class="modal fade" id="accountModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
 
-            <div class="modal-header">
-                <h5 class="modal-title">ĐĂNG NHẬP / ĐĂNG KÝ</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
+                <div class="modal-header">
+                    <h5 class="modal-title">ĐĂNG NHẬP / ĐĂNG KÝ</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
 
-            <div class="modal-body">
+                <div class="modal-body">
 
-                <!--  TABS  -->
-                <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" data-bs-toggle="tab" href="#register">Đăng ký</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#login">Đăng nhập</a>
-                    </li>
-                </ul>
+                    <!--  TABS  -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#register">Đăng ký</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#login">Đăng nhập</a>
+                        </li>
+                    </ul>
 
-                <div class="tab-content pt-3">
+                    <div class="tab-content pt-3">
 
-                    <!-- TAB ĐANG KY  -->
-                    <div class="tab-pane fade show active" id="register">
-                        <form>
-                            <div class="mb-3">
-                                <label>Họ và tên</label>
-                                <input type="text" class="form-control" placeholder="Nhập họ và tên" required>
-                            </div>
+                        <!-- TAB ĐANG KY  -->
+                        <div class="tab-pane fade show active" id="register">
+                            <form>
+                                <div class="mb-3">
+                                    <label>Họ và tên</label>
+                                    <input type="text" class="form-control" placeholder="Nhập họ và tên" required>
+                                </div>
 
-                            <div class="mb-3">
-                                <label>Email</label>
-                                <input type="email" class="form-control" placeholder="Nhập email" required>
-                            </div>
+                                <div class="mb-3">
+                                    <label>Email</label>
+                                    <input type="email" class="form-control" placeholder="Nhập email" required>
+                                </div>
 
-                            <div class="mb-3">
-                                <label>Số điện thoại</label>
-                                <input type="text" class="form-control" placeholder="Nhập số điện thoại" required>
-                            </div>
+                                <div class="mb-3">
+                                    <label>Số điện thoại</label>
+                                    <input type="text" class="form-control" placeholder="Nhập số điện thoại" required>
+                                </div>
 
-                            <div class="mb-3">
-                                <label>Mật khẩu</label>
-                                <input type="password" class="form-control" required>
-                            </div>
+                                <div class="mb-3">
+                                    <label>Mật khẩu</label>
+                                    <input type="password" class="form-control" required>
+                                </div>
 
-                            <div class="mb-3">
-                                <label>Xác nhận mật khẩu</label>
-                                <input type="password" class="form-control" required>
-                            </div>
+                                <div class="mb-3">
+                                    <label>Xác nhận mật khẩu</label>
+                                    <input type="password" class="form-control" required>
+                                </div>
 
-                            <div class="mb-3">
-                                <label>Giới tính</label><br>
-                                <input type="radio" name="gender" required> Nam
-                                <input type="radio" name="gender" required> Nữ
-                            </div>
+                                <div class="mb-3">
+                                    <label>Giới tính</label><br>
+                                    <input type="radio" name="gender" required> Nam
+                                    <input type="radio" name="gender" required> Nữ
+                                </div>
 
-                            <div class="mb-3">
-                                <label>Ngôn ngữ</label>
-                                <select class="form-select">
-                                    <option>Tiếng Việt</option>
-                                    <option>English</option>
-                                </select>
-                            </div>
+                                <div class="mb-3">
+                                    <label>Ngôn ngữ</label>
+                                    <select class="form-select">
+                                        <option>Tiếng Việt</option>
+                                        <option>English</option>
+                                    </select>
+                                </div>
 
-                            <div class="form-check mb-3">
-                                <input class="form-check-input" type="checkbox">
-                                <label class="form-check-label">
-                                    Tôi đồng ý với các điều khoản
-                                </label>
-                            </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">
+                                        Tôi đồng ý với các điều khoản
+                                    </label>
+                                </div>
 
-                            <button class="btn btn-primary">Đăng ký</button>
-                        </form>
-                    </div>
+                                <button class="btn btn-primary">Đăng ký</button>
+                            </form>
+                        </div>
 
-                    <!-- ===== TAB DANG NHAP ===== -->
+                        <!-- ===== TAB DANG NHAP ===== -->
 
-                    <div class="tab-pane fade" id="login">
-                        <form>
-                            <div class="mb-3">
-                                <label>Email</label>
-                                <input type="email" class="form-control" placeholder="Nhập email">
-                            </div>
+                        <div class="tab-pane fade" id="login">
+                            <form>
+                                <div class="mb-3">
+                                    <label>Email</label>
+                                    <input type="email" class="form-control" placeholder="Nhập email">
+                                </div>
 
-                            <div class="mb-3">
-                                <label>Mật khẩu</label>
-                                <input type="password" class="form-control" placeholder="Nhập mật khẩu" required>
-                            </div>
+                                <div class="mb-3">
+                                    <label>Mật khẩu</label>
+                                    <input type="password" class="form-control" placeholder="Nhập mật khẩu" required>
+                                </div>
 
-                            <button class="btn btn-primary">Đăng nhập</button>
-                        </form>
+                                <button class="btn btn-primary">Đăng nhập</button>
+                            </form>
+                        </div>
+
                     </div>
 
                 </div>
 
             </div>
-
         </div>
     </div>
-</div>
 
+
+    <div class="modal fade" id="tableModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Bảng Thành Phần Dinh Dưỡng</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <table class="table table-bordered mx-auto" style="width: 40rem;">
+                        <thead>
+                            <tr class="text-center">
+                                <th rowspan="2" class="bg-warning align-middle">Thành phần</th>
+                                <th colspan="2" class="bg-warning">Giá trị</th>
+                            </tr>
+                            <tr class="text-center">
+                                <th class="bg-warning">Khối lượng</th>
+                                <th class="bg-warning">% DV*</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Calories</td>
+                                <td>200 kcal</td>
+                                <td>20%</td>
+                            </tr>
+                            <tr>
+                                <td>Chất béo</td>
+                                <td>9 g</td>
+                                <td>14%</td>
+                            </tr>
+                            <tr>
+                                <td>Chất béo bão hòa</td>
+                                <td>4 g</td>
+                                <td>20%</td>
+                            </tr>
+                            <tr>
+                                <td>Chất đạm</td>
+                                <td>8 g</td>
+                                <td>16%</td>
+                            </tr>
+                            <tr>
+                                <td>Chất xơ</td>
+                                <td>5 g</td>
+                                <td>20%</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2" class="align-middle">Đường</td>
+                                <td>Đường trắng</td>
+                                <td>12 g</td>
+                            </tr>
+                            <tr>
+                                <td>Đường đen</td>
+                                <td>10 g</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2" class="align-middle">Vitamin</td>
+                                <td>Vitamin C</td>
+                                <td>25%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
