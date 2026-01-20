@@ -1,11 +1,14 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
 import Hello from './components/Hello.vue';
+import bai3 from './components/bai3.vue';
+import bai4 from './components/bai4.vue';
 </script>
 
 <template>
-  <HelloWorld msg="Vite + Vue" />
   <Hello></Hello>
+  <bai3></bai3>
+  <bai4></bai4>
 </template>
 
 <style scoped>
