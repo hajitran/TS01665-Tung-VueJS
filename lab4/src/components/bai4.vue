@@ -42,14 +42,14 @@ import img2 from '../assets/images/sesameoil.jpg';
 import img3 from '../assets/images/spinach.jpg';
 const items = ([
     {
-        title: '8 loại rau củ quả giàu canxi', content: 'Canxi là...', image: img1
+        title: '8 loại rau củ quả giàu canxi', content: 'Canxi là khoang chất cần thiết đối với cơ thể người.Có nhiều cách để bổ sung canxi, trong đó bổ sung qua đường ăn uống là cách tốt nhất.Có 8 loại rau củ giàu canxi ...', image: img1
     },
     {
-        title: 'Các loại gia vị tốt cho sức khỏe', content: 'Một số loại...',
+        title: 'Các loại gia vị tốt cho sức khỏe', content: 'Một số loại gia vị cung cấp nhiều polypheno chống oxy hóa cao hơn các loại gia vị quen thuộc khác. Với một lượng nhỏ các món ăn đã thêm hương thơm và vị hấp dẫn ...',
         image: img2
     },
     {
-        title: '9 loại đậu bổ dưỡng nên dùng nhiều', content: 'Đậu lăng...', image:
+        title: '9 loại đậu bổ dưỡng nên dùng nhiều', content: 'Đậu lăng, đậu nành, đậu phộng, đậu Hà Lan giàu chất xơ, protein cùng nhiều vitamin và khoáng chất giúp giảm lượng đường trong máu, tốt cho tim ...', image:
             img3
     },
 ]);
