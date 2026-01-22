@@ -28,40 +28,56 @@ watch(() => route.path, () => {
 
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
-      <div class="container-fluid">
-        <router-link to="/posts" class="navbar-brand">ASM</router-link>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <nav class="navbar navbar-expand-sm navbar-light" style="background-color: rgb(217, 234, 240);">
+      <div class="container">
+        <router-link to="/posts" class="navbar-brand">
+        </router-link>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <router-link to="/posts" class="nav-link">Trang chủ</router-link>
+              <router-link to="/posts" class="nav-link"><i class="fa-solid fa-list"></i> Bài viết</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/posts/create" class="nav-link">Tạo bài viết</router-link>
+              <router-link to="/posts/create" class="nav-link"><i class="fa-solid fa-film"></i> Tạo bài viết</router-link>
             </li>
-            <!-- Thêm menu Tài khoản -->
             <li class="nav-item">
-              <router-link to="/profile" class="nav-link">Tài khoản</router-link>
+              <a class="nav-link" href="#"><i class="fa-solid fa-circle-info"></i> Giới thiệu</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="fa-solid fa-calendar-days"></i> Sự kiện</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                <i class="fa-solid fa-user"></i> Tài khoản
+              </a>
+              <ul class="dropdown-menu">
+                <li v-if="!currentUser">
+                  <router-link to="/login" class="dropdown-item">Đăng Nhập</router-link>
+                </li>
+                <li v-if="!currentUser">
+                  <router-link to="/register" class="dropdown-item">Đăng ký thành viên</router-link>
+                </li>
+                <li v-if="currentUser">
+                  <router-link to="/profile" class="dropdown-item">Tài khoản của tôi</router-link>
+                </li>
+                <li v-if="currentUser">
+                  <a class="dropdown-item" href="#" @click.prevent="logout">Đăng xuất</a>
+                </li>
+              </ul>
             </li>
           </ul>
-
-          <ul class="navbar-nav">
-            <li class="nav-item" v-if="!currentUser">
-              <router-link to="/login" class="nav-link">Đăng nhập</router-link>
-            </li>
-            <li class="nav-item" v-if="!currentUser">
-              <router-link to="/register" class="nav-link">Đăng ký</router-link>
-            </li>
+          <ul class="navbar-nav d-flex ms-auto">
             <li class="nav-item" v-if="currentUser">
-              <span class="navbar-text me-3">Xin chào, {{ currentUser.name }}</span>
+              <span class="nav-link">Xin chào, {{ currentUser.name }}</span>
             </li>
-            <li class="nav-item" v-if="currentUser">
-              <button @click="logout" class="btn btn-outline-light btn-sm">Đăng xuất</button>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Tiếng Việt</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Tiếng Anh</a>
             </li>
           </ul>
         </div>
