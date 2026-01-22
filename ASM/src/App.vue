@@ -73,12 +73,6 @@ watch(() => route.path, () => {
             <li class="nav-item" v-if="currentUser">
               <span class="nav-link">Xin chào, {{ currentUser.name }}</span>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Tiếng Việt</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Tiếng Anh</a>
-            </li>
           </ul>
         </div>
       </div>

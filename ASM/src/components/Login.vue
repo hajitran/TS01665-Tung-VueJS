@@ -8,7 +8,7 @@ const password = ref('');
 const errorMessage = ref('');
 
 const users = [
-  { id: 1, email: 'test@gmail.com', password: '123456', name: 'Nguyen Van Tung' },
+  { id: 1, email: 'test@gmail.com', password: '123456', name: 'Tran Thanh Tung' },
   { id: 2, email: 'admin@gmail.com', password: 'admin123', name: 'Admin' }
 ];
 
