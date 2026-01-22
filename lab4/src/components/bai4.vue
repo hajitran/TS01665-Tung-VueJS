@@ -1,7 +1,7 @@
 <template lang="">
     <div class="container mt-5">
         <h1 class="text-center">Kiến thức sức khỏe cộng đồng</h1>
-        <div class="row">
+        <div class="row row-cols-4 g-3">
             <div class="col-sm-4">
                 <div class="card">
                     <img :src="items[0].image" alt="Hình ảnh" />
