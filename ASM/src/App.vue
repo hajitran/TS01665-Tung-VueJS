@@ -41,7 +41,8 @@ watch(() => route.path, () => {
               <router-link to="/posts" class="nav-link"><i class="fa-solid fa-list"></i> Bài viết</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/posts/create" class="nav-link"><i class="fa-solid fa-film"></i> Tạo bài viết</router-link>
+              <router-link to="/posts/create" class="nav-link"><i class="fa-solid fa-film"></i> Tạo bài
+                viết</router-link>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#"><i class="fa-solid fa-circle-info"></i> Giới thiệu</a>

@@ -1,8 +1,8 @@
-<script setup>
+<!-- <script setup>
 import bai1 from './components/bai1.vue';
 import bai2 from './components/bai2.vue';
 import bai3 from './components/bai3.vue';
-</script>
+</script> -->
 
 <template>
   <div id="app">
@@ -21,6 +21,7 @@ import { ref } from 'vue';
 const posts = ref([]);
 
 function addPost(post) {
+  posts.value.push(post);
 }
 </script>
 
