@@ -18,7 +18,14 @@ import PostList from './components/PostList.vue';
 import CreatePost from './components/CreatePost.vue';
 import { ref } from 'vue';
 
-const posts = ref([]);
+const posts = ref([
+  { id: 1, title: 'Bật Mí 8 Nguyên Tắc Phối Màu Quần Áo Sành Điệu', 
+  content: 'Bạn có thể phối áo màu xanh lá, quần màu kem và giày màu tím theo cách phối màu kiểu tam giác. Hoặc có thể phối các set đồ cùng ton lạnh hoặc nóng ...', 
+  author: 'Tran Thanh Tung' },
+  { id: 2, title: '10 Cách Giúp Bạn Tự Tin Hơn Trong Giao Tiếp', 
+  content: 'Tự tin là yếu tố quan trọng giúp bạn thành công trong giao tiếp',
+  author: 'Nguyen Van Teo'}
+]);
 
 function addPost(post) {
   posts.value.push(post);

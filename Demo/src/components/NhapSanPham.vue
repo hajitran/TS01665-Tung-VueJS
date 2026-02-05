@@ -4,7 +4,7 @@
 <input v-model="name" placeholder="Tên sản phẩm" />
 <input v-model="price" placeholder="Giá tiền" />
 <textarea v-model="description" placeholder="Mô tả sản phẩm"></textarea>
-<button @click="submitPost">Thêm sản phẩm</button>
+<button @click="submitPost">Thêm sản phẩm</button>  
 </div>
 </template>
 <script setup>
