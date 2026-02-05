@@ -1,12 +1,12 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import axios from 'axios';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
 const currentUser = ref(null);
 const name = ref('');
 const email = ref('');
+const profilePicture = ref(null);
 const currentPassword = ref('');
 const newPassword = ref('');
 const confirmPassword = ref('');
@@ -25,19 +25,17 @@ const loadUserData = () => {
     currentUser.value = JSON.parse(user);
     name.value = currentUser.value.name;
     email.value = currentUser.value.email;
-    fetchMyPosts();
+    profilePicture.value = currentUser.value.profilePicture || null;
+    loadMyPosts();
 };
 
-const fetchMyPosts = async () => {
-    try {
-        const response = await axios.get(`http://localhost:3000/posts?userId=${currentUser.value.id}`);
-        myPosts.value = response.data;
-    } catch (error) {
-        console.error('Lỗi khi lấy bài viết:', error);
+const loadMyPosts = () => {
+    if (window.newPosts && window.newPosts.length > 0) {
+        myPosts.value = window.newPosts.filter(post => post.userId === currentUser.value.id);
     }
 };
 
-const updateProfile = async () => {
+const updateProfile = () => {
     errorMessage.value = '';
     successMessage.value = '';
 
@@ -48,8 +46,6 @@ const updateProfile = async () => {
             email: email.value
         };
 
-        await axios.put(`http://localhost:3000/users/${currentUser.value.id}`, updatedData);
-
         localStorage.setItem('user', JSON.stringify(updatedData));
         currentUser.value = updatedData;
         successMessage.value = 'Cập nhật thông tin thành công!';
@@ -58,7 +54,7 @@ const updateProfile = async () => {
     }
 };
 
-const changePassword = async () => {
+const changePassword = () => {
     errorMessage.value = '';
     successMessage.value = '';
 
@@ -83,8 +79,6 @@ const changePassword = async () => {
             password: newPassword.value
         };
 
-        await axios.put(`http://localhost:3000/users/${currentUser.value.id}`, updatedData);
-
         localStorage.setItem('user', JSON.stringify(updatedData));
         currentUser.value = updatedData;
 
@@ -98,19 +92,35 @@ const changePassword = async () => {
     }
 };
 
-const deletePost = async (id) => {
+const deletePost = (id) => {
     if (confirm('Bạn có chắc muốn xóa bài viết này?')) {
-        try {
-            await axios.delete(`http://localhost:3000/posts/${id}`);
-            fetchMyPosts();
-        } catch (error) {
-            console.error('Lỗi khi xóa:', error);
+        myPosts.value = myPosts.value.filter(post => post.id !== id);
+        if (window.newPosts) {
+            window.newPosts = window.newPosts.filter(post => post.id !== id);
         }
     }
 };
 
 const viewPost = (id) => {
     router.push(`/posts/${id}`);
+};
+
+const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            profilePicture.value = e.target.result;
+            const updatedData = {
+                ...currentUser.value,
+                profilePicture: e.target.result
+            };
+            localStorage.setItem('user', JSON.stringify(updatedData));
+            currentUser.value = updatedData;
+            successMessage.value = 'Cập nhật ảnh đại diện thành công!';
+        };
+        reader.readAsDataURL(file);
+    }
 };
 
 onMounted(() => {
@@ -120,7 +130,6 @@ onMounted(() => {
 
 <template>
     <div class="container mt-4">
-        <!-- Thông báo khi chưa đăng nhập -->
         <div v-if="!isLoggedIn" class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
@@ -136,7 +145,6 @@ onMounted(() => {
             </div>
         </div>
 
-        <!-- Nội dung Profile khi đã đăng nhập -->
         <div v-else>
             <h2 class="mb-4">Quản lý tài khoản</h2>
 
@@ -150,9 +158,6 @@ onMounted(() => {
                         <div class="card-body">
                             <div v-if="errorMessage" class="alert alert-danger">
                                 {{ errorMessage }}
-                            </div>
-                            <div v-if="successMessage" class="alert alert-success">
-                                {{ successMessage }}
                             </div>
 
                             <form @submit.prevent="updateProfile">
@@ -172,13 +177,16 @@ onMounted(() => {
                     </div>
                 </div>
 
-                <!-- Đổi mật khẩu -->
                 <div class="col-md-6 mb-4">
                     <div class="card">
                         <div class="card-header bg-warning">
                             <h4 class="mb-0">Đổi mật khẩu</h4>
                         </div>
                         <div class="card-body">
+                            <div v-if="errorMessage" class="alert alert-danger">
+                                {{ errorMessage }}
+                            </div>
+
                             <form @submit.prevent="changePassword">
                                 <div class="mb-3">
                                     <label class="form-label">Mật khẩu hiện tại</label>
@@ -197,6 +205,31 @@ onMounted(() => {
 
                                 <button type="submit" class="btn btn-warning">Đổi mật khẩu</button>
                             </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-header bg-success text-white">
+                            <h4 class="mb-0">Ảnh đại diện</h4>
+                        </div>
+                        <div class="card-body text-center">
+                            <div v-if="errorMessage" class="alert alert-danger">
+                                {{ errorMessage }}
+                            </div>
+                            <div v-if="successMessage" class="alert alert-success">
+                                {{ successMessage }}
+                            </div>
+                            <div v-if="profilePicture" class="mb-3">
+                                <img :src="profilePicture" alt="Ảnh đại diện" class="img-fluid rounded-circle mb-3"
+                                    style="max-width: 150px;">
+                            </div>
+                            <div v-else class="mb-3">
+                                <p class="text-muted">Chưa có ảnh đại diện</p>
+                            </div>
+                            <input type="file" accept="image/*" @change="handleImageUpload" class="form-control mb-3">
+                            <button type="button" class="btn btn-success">Cập nhật ảnh đại diện</button>
                         </div>
                     </div>
                 </div>

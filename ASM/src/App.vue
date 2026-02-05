@@ -45,11 +45,9 @@ watch(() => route.path, () => {
                 viết</router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"><i class="fa-solid fa-circle-info"></i> Giới thiệu</a>
+              <router-link to="/about" class="nav-link"><i class="fa-solid fa-circle-info"></i> Giới thiệu</router-link>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><i class="fa-solid fa-calendar-days"></i> Sự kiện</a>
-            </li>
+
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                 <i class="fa-solid fa-user"></i> Tài khoản

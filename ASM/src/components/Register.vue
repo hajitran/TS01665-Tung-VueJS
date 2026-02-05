@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from 'vue';
-import axios from 'axios';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
@@ -10,18 +9,54 @@ const password = ref('');
 const confirmPassword = ref('');
 const errorMessage = ref('');
 
-const handleRegister = async () => {
+const handleRegister = () => {
+  errorMessage.value = '';
+
+  if (!name.value.trim()) {
+    errorMessage.value = 'Vui lòng nhập họ tên';
+    return;
+  }
+
+  if (!email.value.trim()) {
+    errorMessage.value = 'Vui lòng nhập email';
+    return;
+  }
+
   if (password.value !== confirmPassword.value) {
     errorMessage.value = 'Mật khẩu không khớp';
     return;
   }
-  
+
+  if (password.value.length < 6) {
+    errorMessage.value = 'Mật khẩu phải có ít nhất 6 ký tự';
+    return;
+  }
+
+  let users = [];
+  const existingUsers = localStorage.getItem('users');
+  if (existingUsers) {
+    users = JSON.parse(existingUsers);
+  }
+
+  if (users.some(u => u.email === email.value)) {
+    errorMessage.value = 'Email này đã được đăng ký';
+    return;
+  }
+
   try {
-    await axios.post('http://localhost:3000/users', {
+    const newId = users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1;
+
+    const newUser = {
+      id: newId,
       name: name.value,
       email: email.value,
-      password: password.value
-    });
+      password: password.value,
+      profilePicture: null
+    };
+
+    users.push(newUser);
+    localStorage.setItem('users', JSON.stringify(users));
+
     alert('Đăng ký thành công!');
     router.push('/login');
   } catch (error) {
