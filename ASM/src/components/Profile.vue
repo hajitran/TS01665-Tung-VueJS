@@ -13,7 +13,7 @@ const confirmPassword = ref('');
 const errorMessage = ref('');
 const successMessage = ref('');
 const isLoggedIn = ref(false);
-const myPosts = ref([]);
+const userPosts = ref([]);
 
 const loadUserData = () => {
     const user = localStorage.getItem('user');
@@ -31,7 +31,7 @@ const loadUserData = () => {
 
 const loadMyPosts = () => {
     if (window.newPosts && window.newPosts.length > 0) {
-        myPosts.value = window.newPosts.filter(post => post.userId === currentUser.value.id);
+        userPosts.value = window.newPosts.filter(post => post.userId === currentUser.value.id);
     }
 };
 
@@ -94,7 +94,7 @@ const changePassword = () => {
 
 const deletePost = (id) => {
     if (confirm('Bạn có chắc muốn xóa bài viết này?')) {
-        myPosts.value = myPosts.value.filter(post => post.id !== id);
+        userPosts.value = userPosts.value.filter(post => post.id !== id);
         if (window.newPosts) {
             window.newPosts = window.newPosts.filter(post => post.id !== id);
         }
@@ -149,7 +149,6 @@ onMounted(() => {
             <h2 class="mb-4">Quản lý tài khoản</h2>
 
             <div class="row">
-                <!-- Thông tin cá nhân -->
                 <div class="col-md-6 mb-4">
                     <div class="card">
                         <div class="card-header bg-primary text-white">
@@ -235,42 +234,24 @@ onMounted(() => {
                 </div>
             </div>
 
-            <!-- Bài viết của tôi -->
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header bg-info text-white">
-                            <h4 class="mb-0">Bài viết của tôi</h4>
+                            <h5 class="mb-0">Bài viết của tôi ({{ userPosts.length }})</h5>
                         </div>
                         <div class="card-body">
-                            <div v-if="myPosts.length === 0" class="alert alert-light">
-                                Bạn chưa có bài viết nào
+                            <div v-if="userPosts.length === 0" class="alert alert-light">Bạn chưa có bài viết nào
                             </div>
-
-                            <div class="table-responsive" v-else>
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>Tiêu đề</th>
-                                            <th>Ngày đăng</th>
-                                            <th>Hành động</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr v-for="post in myPosts" :key="post.id">
-                                            <td>{{ post.title }}</td>
-                                            <td>{{ new Date(post.createdAt).toLocaleDateString() }}</td>
-                                            <td>
-                                                <button @click="viewPost(post.id)" class="btn btn-sm btn-info me-2">
-                                                    Xem
-                                                </button>
-                                                <button @click="deletePost(post.id)" class="btn btn-sm btn-danger">
-                                                    Xóa
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div v-else class="list-group">
+                                <router-link v-for="post in userPosts" :key="post.id" :to="`/posts/${post.id}`"
+                                    class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">{{ post.title }}</h6>
+                                        <small class="text-muted">{{ new
+                                            Date(post.createdAt).toLocaleDateString('vi-VN') }}</small>
+                                    </div>
+                                </router-link>
                             </div>
                         </div>
                     </div>
