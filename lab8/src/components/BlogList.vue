@@ -15,9 +15,9 @@ export default {
   data() {
     return {
       blogs: [
-        { id: 1, title: 'Bài viết về Vue Router' },
-        { id: 2, title: 'Tìm hiểu về Routes động' },
-        { id: 3, title: 'Xác thực trong Vue.js' }
+        { id: 1, title: 'Ông Trump: Mỹ sẽ "dễ dàng chiến thắng" nếu nổ ra xung đột với Iran' },
+        { id: 2, title: 'Trùm ma túy khét tiếng nhất Mexico lộ tung tích vì bạn gái' },
+        { id: 3, title: 'Nga, Venezuela kêu gọi Mỹ "lập tức thả Tổng thống Maduro"' }
       ]
     }
   }
